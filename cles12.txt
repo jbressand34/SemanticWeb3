@@ -1,0 +1,3 @@
+1-non keys: [[ontology_base:given_name, ontology_base:age], [ontology_base:soc_sec_id], [ontology_base:age, ontology_base:surname]]
+
+0-almost keys:[[ontology_base:soc_sec_id, ontology_base:age], [ontology_base:soc_sec_id, ontology_base:surname], [ontology_base:given_name, ontology_base:soc_sec_id], [ontology_base:phone_number], [ontology_base:given_name, ontology_base:surname]]
