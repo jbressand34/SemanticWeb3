@@ -1,0 +1,73 @@
+<Silk>
+	<Prefixes>
+		<Prefix id="rdf" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+		<Prefix id="rdfs" namespace="http://www.w3.org/2000/01/rdf-schema#"/>
+		<Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#"/>
+	</Prefixes>
+	<DataSources>
+		<Dataset id="Person11" type="file">
+			<Param name="file" value="person11.nt"/>
+			<Param name="format" value="n-triples"/>
+			<Param name="graph" value=""/>
+		</Dataset>
+		<Dataset id="Person12" type="file">
+			<Param name="file" value="person12.nt"/>
+			<Param name="format" value="n-triples"/>
+			<Param name="graph" value=""/>
+		</Dataset>
+	</DataSources>
+	<Interlinks>
+		<Interlink id="MyLink">
+			<SourceDataset dataSource="Person11" var="a" typeUri="http://www.okkam.org/oaie/person1-Person">
+				<RestrictTo></RestrictTo>
+			</SourceDataset>
+			<TargetDataset dataSource="Person12" var="b" typeUri="http://www.okkam.org/oaie/person2-Person">
+				<RestrictTo></RestrictTo>
+			</TargetDataset>
+			<LinkageRule linkType="owl:sameAs">
+				<Aggregate id="max1" required="false" weight="1" type="max">
+					<Compare id="levenshtein1" required="false" weight="1" metric="levenshtein" threshold="0.2" indexing="true">
+						<Input id="sourcePath1" path="/<ontology_base:soc_sec_id>"/>
+						<Input id="targetPath1" path="/<ontology_base:soc_sec_id>"/>
+						<Param name="minChar" value="0"/>
+						<Param name="maxChar" value="z"/>
+					</Compare>
+					<Aggregate id="average2" required="false" weight="1" type="average">
+						<Aggregate id="average3" required="false" weight="1" type="average">
+							<Compare id="levenshtein3" required="false" weight="1" metric="levenshtein" threshold="0.0" indexing="true">
+								<Input id="sourcePath4" path="/<ontology_base:given_name>"/>
+								<Input id="targetPath4" path="/<ontology_base:given_name>"/>
+								<Param name="minChar" value="0"/>
+								<Param name="maxChar" value="z"/>
+							</Compare>
+							<Compare id="levenshtein4" required="false" weight="1" metric="levenshtein" threshold="0.0" indexing="true">
+								<Input id="sourcePath5" path="/<ontology_base:surname>"/>
+								<Input id="targetPath5" path="/<ontology_base:surname>"/>
+								<Param name="minChar" value="0"/>
+								<Param name="maxChar" value="z"/>
+							</Compare>
+						</Aggregate>
+						<Aggregate id="average1" required="false" weight="1" type="average">
+							<Compare id="jaro1" required="false" weight="1" metric="jaro" threshold="0.1" indexing="true">
+								<Input id="sourcePath2" path="/<ontology_base:soc_sec_id>"/>
+								<Input id="targetPath2" path="/<ontology_base:soc_sec_id>"/>
+							</Compare>
+							<Compare id="levenshtein2" required="false" weight="1" metric="levenshtein" threshold="0.2" indexing="true">
+								<Input id="sourcePath3" path="/<ontology_base:soc_sec_id>"/>
+								<Input id="targetPath3" path="/<ontology_base:soc_sec_id>"/>
+								<Param name="minChar" value="0"/>
+								<Param name="maxChar" value="z"/>
+							</Compare>
+						</Aggregate>
+					</Aggregate>
+				</Aggregate>
+				<Filter/>
+			</LinkageRule>
+			<Outputs></Outputs>
+		</Interlink>
+	</Interlinks>
+	<Transforms>
+        </Transforms>
+	<Outputs>
+        </Outputs>
+</Silk>
